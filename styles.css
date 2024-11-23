@@ -1,0 +1,95 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000;  /* Fond noir */
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    color: white;
+}
+
+.container {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 50px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+#subscriberCount {
+    font-size: 5em;
+    font-weight: bold;
+}
+
+/* Style des lasers */
+.laser {
+    position: absolute;
+    width: 3px;
+    height: 100vh;
+    background: linear-gradient(to top, rgba(255, 0, 255, 0.8), rgba(255, 0, 255, 0));
+    opacity: 0;
+    animation: laserAnimation 1s ease-out;
+}
+
+/* Animation des lasers */
+@keyframes laserAnimation {
+    0% {
+        opacity: 1;
+        transform: translateY(100vh);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-100vh);
+    }
+}
+
+/* Style des particules */
+.particle {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: rgba(255, 255, 0, 0.8);
+    border-radius: 50%;
+    animation: particleAnimation 1s ease-out;
+}
+
+/* Animation des particules */
+@keyframes particleAnimation {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-100px) scale(0.5);
+    }
+}
+
+/* Style des flashs */
+.flash {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.7);
+    opacity: 0;
+    animation: flashAnimation 0.2s ease-out;
+}
+
+/* Animation des flashs */
+@keyframes flashAnimation {
+    0% {
+        opacity: 0.7;
+    }
+    100% {
+        opacity: 0;
+    }
+}
