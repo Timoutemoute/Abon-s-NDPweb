@@ -13,6 +13,9 @@ async function getSubscriberCount() {
             `https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${CHANNEL_ID}&key=${API_KEY}`
         );
 
+        // Afficher la réponse brute
+        console.log('Réponse brute :', response);
+
         // Vérifier si la réponse est valide
         if (!response.ok) {
             throw new Error(`Erreur HTTP : ${response.status}`);
@@ -20,6 +23,7 @@ async function getSubscriberCount() {
 
         // Convertir la réponse en JSON
         const data = await response.json();
+        console.log('Réponse JSON :', data); // Afficher la réponse JSON
 
         // Vérifier si les données sont valides
         if (!data.items || data.items.length === 0) {
@@ -28,6 +32,9 @@ async function getSubscriberCount() {
 
         // Extraire le nombre d'abonnés
         const subscribers = data.items[0].statistics.subscriberCount;
+        console.log('Nombre d\'abonnés :', subscribers); // Afficher le nombre d'abonnés
+
+        // Mettre à jour le compteur
         counterElement.textContent = subscribers;
 
         // Animation à chaque mise à jour
@@ -67,6 +74,3 @@ setInterval(getSubscriberCount, 10000);
 
 // Charger le compteur au démarrage
 getSubscriberCount();
-
-console.log('Réponse API :', data);
-console.log('Nombre d\'abonnés :', subscribers);
