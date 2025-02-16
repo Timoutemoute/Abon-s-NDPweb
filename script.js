@@ -1,4 +1,4 @@
-const apiKey = 'AIzaSyBMzE8QEtgaucF9WEg2kOpKKhWOUQ1nozw'; // Remplacez par votre clé API
+const apiKey = 'AIzaSyCByW5mZYsBROy0vWezfRPAJ_N0ksCJmwY'; // Remplacez par votre clé API
 const channelId = 'UCx1zi13TAKxrAVvs6sXr03Q'; // Remplacez par l'ID de la chaîne YouTube
 
 // Éléments du DOM
