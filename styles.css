@@ -16,12 +16,15 @@ body {
     padding: 2rem;
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
 }
 
 h1 {
     color: #333;
     font-size: 2.5rem;
     margin-bottom: 1rem;
+    animation: fadeIn 2s ease-in-out;
 }
 
 .counter-wrapper {
@@ -35,6 +38,7 @@ h1 {
     color: #ff0000; /* Rouge YouTube */
     margin-top: 20px;
     transition: transform 0.3s ease, color 0.3s ease;
+    animation: popIn 1s ease-in-out;
 }
 
 /* Animations de base */
@@ -83,6 +87,27 @@ h1 {
     }
 }
 
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes popIn {
+    0% {
+        transform: scale(0);
+    }
+    80% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
 /* Animations spéciales */
 @keyframes confetti {
     0% {
@@ -106,6 +131,27 @@ h1 {
     }
 }
 
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000, 0 0 20px #ff0000;
+    }
+    50% {
+        text-shadow: 0 0 10px #ff7e5f, 0 0 20px #ff7e5f, 0 0 30px #ff7e5f;
+    }
+    100% {
+        text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000, 0 0 20px #ff0000;
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
 /* Classes d'animation */
 .bounce {
     animation: bounce 0.5s;
@@ -121,6 +167,14 @@ h1 {
 
 .color-change {
     animation: colorChange 3s infinite;
+}
+
+.glow {
+    animation: glow 2s infinite;
+}
+
+.float {
+    animation: float 3s ease-in-out infinite;
 }
 
 .confetti {
@@ -152,8 +206,106 @@ h1 {
     color: #333;
     opacity: 0;
     transition: opacity 0.5s ease;
+    animation: fadeIn 2s ease-in-out;
 }
 
 .show-message {
     opacity: 1;
+}
+
+/* Effets de fond animés */
+.container::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    animation: rotateBackground 20s linear infinite;
+    z-index: -1;
+}
+
+@keyframes rotateBackground {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Confettis */
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #ffcc00;
+    top: -10%;
+    opacity: 0;
+    animation: confetti 2s ease-out;
+}
+
+@keyframes confetti {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(500px) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* Feux d'artifice */
+.fireworks {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle, #ff7e5f, #ff0000);
+    border-radius: 50%;
+    opacity: 0;
+    animation: fireworks 1s ease-out;
+}
+
+@keyframes fireworks {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* Effet de lueur */
+.glow {
+    animation: glow 2s infinite;
+}
+
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000, 0 0 20px #ff0000;
+    }
+    50% {
+        text-shadow: 0 0 10px #ff7e5f, 0 0 20px #ff7e5f, 0 0 30px #ff7e5f;
+    }
+    100% {
+        text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000, 0 0 20px #ff0000;
+    }
+}
+
+/* Effet de flottement */
+.float {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
 }
