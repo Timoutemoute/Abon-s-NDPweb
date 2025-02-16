@@ -1,7 +1,6 @@
 const apiKey = 'AIzaSyBMzE8QEtgaucF9WEg2kOpKKhWOUQ1nozw'; // Remplacez par votre clé API
 const channelId = 'UCx1zi13TAKxrAVvs6sXr03Q'; // Remplacez par l'ID de la chaîne YouTube
 
-
 // Éléments du DOM
 const counterElement = document.getElementById('counter');
 const messageElement = document.getElementById('message');
@@ -9,10 +8,25 @@ const messageElement = document.getElementById('message');
 // Fonction pour récupérer le nombre d'abonnés
 async function getSubscriberCount() {
     try {
+        // Faire une requête à l'API YouTube
         const response = await fetch(
             `https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${CHANNEL_ID}&key=${API_KEY}`
         );
+
+        // Vérifier si la réponse est valide
+        if (!response.ok) {
+            throw new Error(`Erreur HTTP : ${response.status}`);
+        }
+
+        // Convertir la réponse en JSON
         const data = await response.json();
+
+        // Vérifier si les données sont valides
+        if (!data.items || data.items.length === 0) {
+            throw new Error('Aucune donnée trouvée pour cette chaîne.');
+        }
+
+        // Extraire le nombre d'abonnés
         const subscribers = data.items[0].statistics.subscriberCount;
         counterElement.textContent = subscribers;
 
@@ -43,6 +57,8 @@ async function getSubscriberCount() {
     } catch (error) {
         console.error('Erreur lors de la récupération des abonnés :', error);
         counterElement.textContent = 'Erreur';
+        messageElement.textContent = 'Impossible de charger les abonnés.';
+        messageElement.classList.add('show-message');
     }
 }
 
