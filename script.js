@@ -1,5 +1,5 @@
-const apiKey = 'AIzaSyCByW5mZYsBROy0vWezfRPAJ_N0ksCJmwY'; // Remplacez par votre clé API
-const channel_Id = 'UCx1zi13TAKxrAVvs6sXr03Q'; // Remplacez par l'ID de la chaîne YouTube
+const API_KEY_Key = 'AIzaSyCByW5mZYsBROy0vWezfRPAJ_N0ksCJmwY'; // Remplacez par votre clé API
+const CHANNEL_ID = 'UCx1zi13TAKxrAVvs6sXr03Q'; // Remplacez par l'ID de la chaîne YouTube
 
 // Éléments du DOM
 const counterElement = document.getElementById('counter');
