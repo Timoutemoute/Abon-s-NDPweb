@@ -67,3 +67,6 @@ setInterval(getSubscriberCount, 10000);
 
 // Charger le compteur au démarrage
 getSubscriberCount();
+
+console.log('Réponse API :', data);
+console.log('Nombre d\'abonnés :', subscribers);
